@@ -46,8 +46,8 @@ jobs:
       - name: Commit and push changes
         run: |
           cd target-repo
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "aitmansouraziz"
+          git config user.email "mansour.aziz@hotmail.com"
           git add "${{ inputs.target_path }}"
           git commit -m "Copy ${{ inputs.source_file }} from source repository" || echo "No changes to commit"
           git push
