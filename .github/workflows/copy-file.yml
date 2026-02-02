@@ -30,18 +30,16 @@ jobs:
     steps:
       - name: Checkout source repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Clone target repository
-        run: |
-          git clone \
-            --branch ${{ inputs.target_branch }} \
-            https://x-access-token:${{ secrets.TARGET_REPO_TOKEN }}@github.com/${{ inputs.target_repo }}.git \
-            target-repo
-
-      - name: Copy file
-        run: |
-          mkdir -p "$(dirname target-repo/${{ inputs.target_path }})"
-          cp "${{ inputs.source_file }}" "target-repo/${{ inputs.target_path }}"
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.target_repo }}
+          ref: ${{ inputs.target_branch }}
+          token: ${{ secrets.TARGET_REPO_TOKEN }}
+          path: target-repo
 
       - name: Commit and push changes
         run: |
