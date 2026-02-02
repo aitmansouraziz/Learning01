@@ -6,11 +6,12 @@ on:
       source_file:
         description: "Path of the file to copy from source repo"
         required: true
-        default: "file.txt"
+        default: "notes.txt"
 
       target_repo:
         description: "Target repository (OWNER/REPO)"
         required: true
+        default : aitmansouraziz/Git_Tuturial_01
 
       target_branch:
         description: "Target branch"
@@ -20,7 +21,7 @@ on:
       target_path:
         description: "Destination path in target repo"
         required: true
-        default: "file.txt"
+        default: "./Ressources/notes.txt"
 
 jobs:
   copy-file:
